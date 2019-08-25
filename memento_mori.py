@@ -12,16 +12,16 @@ life_expectancy_days = 365 * 81.3  # years
 # offset the year line by the weekday of the first day,
 # e.g. if the first of January is a Wednesday, the line will be offset by 2
 # this will make each column the same weekday over all lines
-enable_weekday_offset = False
+enable_weekday_offset = True
 
 # show the year to the left of the line
 show_year = True
 
 # character displayed for a day you have lived
-day_passed = '▮'
+day_passed = 'X'
 
 # character displayed for a day
-day_future = '·'
+day_future = '.'
 
 birth_year = birthday.year
 day_of_birthyear = (birthday - date(birthday.year, 1, 1)).days
@@ -48,15 +48,15 @@ output = []
 output += [(birth_year, weekday_offset(birth_year) + day_of_birthyear, 
     days_in_year(birth_year) - day_of_birthyear, 0)]
 
-for y in range(birth_year+1, year_now-1):
+for y in range(birth_year+1, year_now):
     output += [(y, weekday_offset(y), days_in_year(y), 0)]
 
-output += [(year_now, weekday_offset(y), day_of_year_now, days_in_year(year_now) - day_of_year_now)]
+output += [(year_now, weekday_offset(year_now), day_of_year_now, days_in_year(year_now) - day_of_year_now)]
 
-for y in range(year_now+1, date_of_death.year-1):
+for y in range(year_now+1, date_of_death.year):
     output += [(y, weekday_offset(y), 0, days_in_year(year_now))]
 
-output += [(date_of_death.year, weekday_offset(y), 0, day_of_deathyear)]
+output += [(date_of_death.year, weekday_offset(date_of_death.year), 0, day_of_deathyear)]
 
 
 for year, offset, past, future in output:
