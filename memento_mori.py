@@ -18,10 +18,10 @@ enable_weekday_offset = True
 show_year = True
 
 # character displayed for a day you have lived
-day_passed = 'X'
+day_passed = '\u2588'
 
-# character displayed for a day
-day_future = '.'
+# character displayed for a day in the future
+day_future = '\u00B7'
 
 birth_year = birthday.year
 day_of_birthyear = (birthday - date(birthday.year, 1, 1)).days
